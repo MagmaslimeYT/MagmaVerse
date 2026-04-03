@@ -2,46 +2,87 @@
 <html>
 <head>
   <title>Store|MagmaVerse</title>
-
-  <!-- TAB ICON (FAVICON) -->
-  <link rel="icon" type="images/png" href="Icon_MagmaVerse.png">
+  <link rel="icon" type="image/png" href="Icon_MagmaVerse.png">
 
   <style>
     body {
-      background: black;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(45deg, #000000, #330000, #660000);
+      background-size: 400% 400%;
+      animation: lava 10s ease infinite;
+      font-family: Arial, sans-serif;
       color: orange;
       text-align: center;
-      font-family: Arial;
+    }
+
+    @keyframes lava {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
     }
 
     h1 {
-      font-size: 50px;
-      text-shadow: 0 0 15px orange;
-      margin-top: 50px;
-    }
-
-    p {
-      font-size: 20px;
+      font-size: 60px;
+      text-shadow: 0 0 20px orange;
+      margin-bottom: 20px;
     }
 
     .box {
+      background: rgba(0,0,0,0.5);
       border: 2px solid orange;
-      display: inline-block;
-      padding: 20px;
-      margin-top: 20px;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px orange;
+    }
+
+    .ip {
+      font-size: 22px;
+      font-weight: bold;
+      color: yellow;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 18px;
+      font-weight: bold;
+      background: orange;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
       box-shadow: 0 0 10px orange;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: yellow;
+      color: black;
+      box-shadow: 0 0 20px yellow;
     }
   </style>
 </head>
 
 <body>
 
-  <h1>🔥 MagmaVerse 🔥</h1>
-
   <div class="box">
+    <h1>🔥 MagmaVerse 🔥</h1>
     <p>Welcome to my Minecraft server</p>
-    <p><b>IP:</b>MagmaVerse.aternos.me</p>
+    <p>IP: <span class="ip" id="server-ip">MagmaVerse.aternos.me</span></p>
+    <button onclick="copyIP()">Copy IP</button>
   </div>
+
+  <script>
+    function copyIP() {
+      const ip = document.getElementById('server-ip').innerText;
+      navigator.clipboard.writeText(ip).then(() => {
+        alert('IP copied to clipboard! 🔥');
+      });
+    }
+  </script>
 
 </body>
 </html>
